@@ -1,0 +1,200 @@
+﻿@model SCNEXTCoreApp.Models.Master.CompanyDet
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h4>CompanyDet</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="AddorEdit" asp-controller="CompanyDet" method="POST" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="CmpId" />
+            <div class="form-group">
+                <label asp-for="CompanyID" class="control-label"></label>
+                @Html.TextBox("CompanyID", (string)ViewBag.CompanyID, new { @readonly = "readonly" })
+
+            </div>
+            <div class="form-group">
+                <label asp-for="CompName" class="control-label"></label>
+                <input asp-for="CompName" class="form-control" />
+                <span asp-validation-for="CompName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CompCode" class="control-label"></label>
+                @Html.TextBox("CompCode", (string)ViewBag.compcode, new { @readonly = "readonly" })
+
+            </div>
+            <div class="form-group">
+                <label asp-for="CompTrnNo" class="control-label"></label>
+                <input asp-for="CompTrnNo" class="form-control" />
+                <span asp-validation-for="CompTrnNo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CompAddress" class="control-label"></label>
+                <input asp-for="CompAddress" class="form-control" />
+                <span asp-validation-for="CompAddress" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CompCity" class="control-label"></label>
+                <input asp-for="CompCity" class="form-control" />
+                <span asp-validation-for="CompCity" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CompState" class="control-label"></label>
+                <input asp-for="CompState" class="form-control" />
+                <span asp-validation-for="CompState" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CompCountry" class="control-label"></label>
+                <input asp-for="CompCountry" class="form-control" />
+                <span asp-validation-for="CompCountry" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CompZipCode" class="control-label"></label>
+                <input asp-for="CompZipCode" class="form-control" />
+                <span asp-validation-for="CompZipCode" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CompPrefPhoneNo" class="control-label"></label>
+                <input asp-for="CompPrefPhoneNo" class="form-control" />
+                <span asp-validation-for="CompPrefPhoneNo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CompAltPhoneNo" class="control-label"></label>
+                <input asp-for="CompAltPhoneNo" class="form-control" />
+                <span asp-validation-for="CompAltPhoneNo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CompContactName" class="control-label"></label>
+                <input asp-for="CompContactName" class="form-control" />
+                <span asp-validation-for="CompContactName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CompRefNameNo" class="control-label"></label>
+                <input asp-for="CompRefNameNo" class="form-control" />
+                <span asp-validation-for="CompRefNameNo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CompLoginEnable" class="control-label"></label>
+                <input asp-for="CompLoginEnable" class="form-control" />
+                <span asp-validation-for="CompLoginEnable" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CompAddress2" class="control-label"></label>
+                <input asp-for="CompAddress2" class="form-control" />
+                <span asp-validation-for="CompAddress2" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                @*<label asp-for="compLogo" class="control-label"></label>
+            @Html.TextBox("Code", (string)ViewBag.cmpdet, new { @readonly = "readonly" })*@
+                <label>Upload Image</label>
+                <input type="file" id="file" name="file" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="OrgTypeID" class="control-label"></label>
+                <input asp-for="OrgTypeID" class="form-control" />
+                <span asp-validation-for="OrgTypeID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="OrgID" class="control-label"></label>
+                <input asp-for="OrgID" class="form-control" />
+                <span asp-validation-for="OrgID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LicenseType" class="control-label"></label>
+                <input asp-for="LicenseType" class="form-control" />
+                <span asp-validation-for="LicenseType" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UserLimit" class="control-label"></label>
+                <input asp-for="UserLimit" class="form-control" />
+                <span asp-validation-for="UserLimit" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DefWorkStartTime" class="control-label"></label>
+                <input asp-for="DefWorkStartTime" class="form-control" />
+                <span asp-validation-for="DefWorkStartTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DefWorkEndTime" class="control-label"></label>
+                <input asp-for="DefWorkEndTime" class="form-control" />
+                <span asp-validation-for="DefWorkEndTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FinStartDate" class="control-label"></label>
+                <input asp-for="FinStartDate" class="form-control" />
+                <span asp-validation-for="FinStartDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FinEndDate" class="control-label"></label>
+                <input asp-for="FinEndDate" class="form-control" />
+                <span asp-validation-for="FinEndDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CmpTimeZone" class="control-label"></label>
+                <input asp-for="CmpTimeZone" class="form-control" />
+                <span asp-validation-for="CmpTimeZone" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CompBussinessHr" class="control-label"></label>
+                <input asp-for="CompBussinessHr" class="form-control" />
+                <span asp-validation-for="CompBussinessHr" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MaxWrkHr" class="control-label"></label>
+                <input asp-for="MaxWrkHr" class="form-control" />
+                <span asp-validation-for="MaxWrkHr" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TrnNo" class="control-label"></label>
+                <input asp-for="TrnNo" class="form-control" />
+                <span asp-validation-for="TrnNo" class="text-danger"></span>
+            </div>
+          
+            <div class="form-group">
+                <label for="file">Upload Logo</label>
+                <input type="file" id="file" name="file" class="form-control" />
+            </div>
+            @*<div class="form-group">
+            <label asp-for="CreatedOn" class="control-label"></label>
+            <input asp-for="CreatedOn" class="form-control" />
+            <span asp-validation-for="CreatedOn" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="CreatedBy" class="control-label"></label>
+            <input asp-for="CreatedBy" class="form-control" />
+            <span asp-validation-for="CreatedBy" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="ModifiedBy" class="control-label"></label>
+            <input asp-for="ModifiedBy" class="form-control" />
+            <span asp-validation-for="ModifiedBy" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="ModifiedOn" class="control-label"></label>
+            <input asp-for="ModifiedOn" class="form-control" />
+            <span asp-validation-for="ModifiedOn" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="IP" class="control-label"></label>
+            <input asp-for="IP" class="form-control" />
+            <span asp-validation-for="IP" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Status" class="control-label"></label>
+            <input asp-for="Status" class="form-control" />
+            <span asp-validation-for="Status" class="text-danger"></span>
+        </div>*@
+            <div class="form-group">
+                <input type="submit" value="submit" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

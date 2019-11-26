@@ -1,0 +1,42 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Controllers\Transaction\**" />
+    <Compile Remove="Data\Transaction\**" />
+    <Compile Remove="Models\Transaction\**" />
+    <Content Remove="Controllers\Transaction\**" />
+    <Content Remove="Data\Transaction\**" />
+    <Content Remove="Models\Transaction\**" />
+    <EmbeddedResource Remove="Controllers\Transaction\**" />
+    <EmbeddedResource Remove="Data\Transaction\**" />
+    <EmbeddedResource Remove="Models\Transaction\**" />
+    <None Remove="Controllers\Transaction\**" />
+    <None Remove="Data\Transaction\**" />
+    <None Remove="Models\Transaction\**" />
+  </ItemGroup>
+
+
+  <ItemGroup>    
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.2.6" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Proxies" Version="2.2.6" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.4" />
+    <PackageReference Include="PagedList.Core.Mvc" Version="2.1.0" />
+    <PackageReference Include="X.PagedList.Mvc.Core" Version="7.9.1" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <Folder Include="Controllers\Master\Transaction\" />
+    <Folder Include="Data\Master\Transaction\" />
+    <Folder Include="Models\Master\Transaction\" />
+    <Folder Include="wwwroot\ImageFiles\" />
+  </ItemGroup>
+
+</Project>

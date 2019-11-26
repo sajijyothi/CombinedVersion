@@ -1,0 +1,476 @@
+﻿@model SCNEXTCoreApp.Models.Master.Employee
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Star Admin Premium Bootstrap Admin Dashboard Template</title>
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="~/assets/vendors/iconfonts/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="~/assets/vendors/iconfonts/ionicons/css/ionicons.css">
+    <link rel="stylesheet" href="~/assets/vendors/iconfonts/typicons/src/font/typicons.css">
+    <link rel="stylesheet" href="~/assets/vendors/iconfonts/flag-icon-css/css/flag-icon.min.css">
+    <link rel="stylesheet" href="~/assets/vendors/css/vendor.bundle.base.css">
+    <link rel="stylesheet" href="~/assets/vendors/css/vendor.bundle.addons.css">
+    <!-- endinject -->
+    <!-- plugin css for this page -->
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="~/assets/css/shared/style.css">
+    <!-- endinject -->
+    <!-- Layout styles -->
+    <link rel="stylesheet" href="~/assets/css/demo_1/style.css">
+    <!-- End Layout styles -->
+    <link rel="shortcut icon" href="~/assets/images/favicon.png" />
+</head>
+<body>
+    <div class="container-scroller">
+        <!-- partial:../../partials/_navbar.html -->
+        <div class="container-fluid page-body-wrapper">
+
+            <div class="col-12 grid-margin">
+                <div class="card">
+                    <div class="card-body">
+                        <script src="~/lib/jquery/dist/jquery.js"></script>
+                        <script type="text/javascript">
+                            $(document).ready(function () {
+                                $('#CountryId').change(function () {
+                                    var url = "/Employee/GetState";
+                                    var ddlsource = $("#CountryId").val();
+
+                                    $.getJSON(url, { CountryId: ddlsource }, function (data) {
+                                        var items = '';
+                                        $("#StateId").empty();
+                                        $.each(data, function (i, row) {
+                                            items += '<option value="' + row.value + '">' + row.text + '</option>';
+                                        });
+                                        $('#StateId').html(items);
+                                    });
+                                });
+                            });
+
+                        </script>
+
+                        <script type="text/javascript">
+                            $(document).ready(function () {
+                                $('#StateId').change(function () {
+                                    var url = "/Employee/GetCity";
+                                    var ddlsource = $("#StateId").val();
+
+                                    $.getJSON(url, { StateId: ddlsource }, function (data) {
+                                        var items = '';
+                                        $("#CityId").empty();
+                                        $.each(data, function (i, row) {
+                                            items += '<option value="' + row.value + '">' + row.text + '</option>';
+                                        });
+                                        $('#CityId').html(items);
+                                    });
+                                });
+                            });
+
+                        </script>
+
+                        <div class="row">
+
+                            <div class="col-xl-12">
+                                <form enctype="multipart/form-data" asp-action="Create">
+                                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                    <ul class="nav nav-pills nav-justified">
+                                        <li class="nav-item active">
+                                            <a href="#PersonalDetailsTab" data-toggle="tab">Personal Details</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="#ProfessionalDetailsTab" data-toggle="tab">Professional Details</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="#SalaryDetailsTab" data-toggle="tab">Salary  Details</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="#ContactDetailsTab" data-toggle="tab">Contact Details</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="#OtherDocumentsTab" data-toggle="tab">Other Documents</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="#JobDetailsTab" data-toggle="tab">Job Details</a>
+                                        </li>
+                                    </ul>
+                                    <br />
+                                    <br />
+                                    <div class="tab-content">
+                                        <div id="PersonalDetailsTab" class="tab-pane active col-md-12 ">
+                                            <div class="form-group">
+                                                <label asp-for="EmpFirstName" class="control-label">FirstName</label>
+                                                <input asp-for="EmpFirstName" class="form-control " />
+                                                <span asp-validation-for="EmpFirstName" class="text-danger"></span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label asp-for="EmpMiddleName" class="control-label">MiddleName</label>
+                                                <input asp-for="EmpMiddleName" class="form-control" />
+                                                <span asp-validation-for="EmpMiddleName" class="text-danger"></span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label asp-for="EmpLastName" class="control-label">LastName</label>
+                                                <input asp-for="EmpLastName" class="form-control" />
+                                                <span asp-validation-for="EmpLastName" class="text-danger"></span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label asp-for="Gender" class="control-label"></label>
+                                                <select asp-for="Gender" class="form-control">
+                                                    <option>Male</option>
+                                                    <option>Female</option>
+                                                </select>
+                                                <span asp-validation-for="Gender" class="text-danger"></span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label asp-for="EmpCode" class="control-label">Employee Code</label>
+                                                <input asp-for="EmpCode" class="form-control" />
+                                                <span asp-validation-for="EmpCode" class="text-danger"></span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label asp-for="DOB" class="control-label">Date of Birth</label>
+                                                <input asp-for="DOB" class="form-control" />
+                                                <span asp-validation-for="DOB" class="text-danger"></span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Upload Image</label>
+                                                <input type="file" id="file" name="file" class="form-control">
+                                            </div>
+
+                                            <a href="#ProfessionalDetailsTab" data-toggle="tab" class="btn btn-primary">Next</a>
+
+                                        </div>
+
+                                        <div id="ProfessionalDetailsTab" class="tab-pane fade col-md-12">
+                                            <div class="form-group">
+                                                <label asp-for="Profession" class="control-label"></label>
+                                                <input asp-for="Profession" class="form-control" />
+                                                <span asp-validation-for="Profession" class="text-danger"></span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label asp-for="Designation" class="control-label"></label>
+                                                <input asp-for="Designation" class="form-control" />
+                                                <span asp-validation-for="Designation" class="text-danger"></span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label asp-for="DOJ" class="control-label">Date of Join</label>
+                                                <input asp-for="DOJ" class="form-control" />
+                                                <span asp-validation-for="DOJ" class="text-danger"></span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label asp-for="YearOfexp" class="control-label">Year Of experience</label>
+                                                <input asp-for="YearOfexp" class="form-control" />
+                                                <span asp-validation-for="YearOfexp" class="text-danger"></span>
+                                            </div>
+                                            <a href="#PersonalDetailsTab" data-toggle="tab" class="btn btn-primary">Back</a>
+                                            <a href="#SalaryDetailsTab" data-toggle="tab" class="btn btn-primary">Next</a>
+                                        </div>
+                                        <div id="SalaryDetailsTab" class="tab-pane col-md-12">
+                                            <div class="form-group">
+                                                <label asp-for="BasicSalary" class="control-label">Basic Salary</label>
+                                                <input asp-for="BasicSalary" class="form-control" />
+                                                <span asp-validation-for="BasicSalary" class="text-danger"></span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label asp-for="HRAAmt" class="control-label">HRA</label>
+                                                <input asp-for="HRAAmt" class="form-control" />
+                                                <span asp-validation-for="HRAAmt" class="text-danger"></span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label asp-for="TransportAmt" class="control-label">Transport</label>
+                                                <input asp-for="TransportAmt" class="form-control" />
+                                                <span asp-validation-for="TransportAmt" class="text-danger"></span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label asp-for="OtherAllowanceAmt" class="control-label">OtherAllowance</label>
+                                                <input asp-for="OtherAllowanceAmt" class="form-control" />
+                                                <span asp-validation-for="OtherAllowanceAmt" class="text-danger"></span>
+                                            </div>
+                                            <a href="#ProfessionalDetailsTab" data-toggle="tab" class="btn btn-primary">Back</a>
+                                            <a href="#ContactDetailsTab" data-toggle="tab" class="btn btn-primary">Next</a>
+                                        </div>
+                                        <div id="ContactDetailsTab" class="tab-pane fade col-md-12">
+                                            <div class="form-group">
+                                                <label asp-for="Address" class="control-label">Current Address</label>
+                                                <input asp-for="Address" class="form-control" />
+                                                <span asp-validation-for="Address" class="text-danger"></span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label asp-for="PermanentAddress" class="control-label">Permanent Address</label>
+                                                <input asp-for="PermanentAddress" class="form-control" />
+                                                <span asp-validation-for="PermanentAddress" class="text-danger"></span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label asp-for="ContactNo" class="control-label">Contact No</label>
+                                                <input asp-for="ContactNo" class="form-control" />
+                                                <span asp-validation-for="ContactNo" class="text-danger"></span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label asp-for="LandlineNo" class="control-label">Landline</label>
+                                                <input asp-for="LandlineNo" class="form-control" />
+                                                <span asp-validation-for="LandlineNo" class="text-danger"></span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label asp-for="EmergencyNo" class="control-label">In case of Emergency</label>
+                                                <input asp-for="EmergencyNo" class="form-control" />
+                                                <span asp-validation-for="EmergencyNo" class="text-danger"></span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label asp-for="Email" class="control-label"></label>
+                                                <input asp-for="Email" class="form-control" />
+                                                <span asp-validation-for="Email" class="text-danger"></span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label asp-for="FaxNo" class="control-label">Fax</label>
+                                                <input asp-for="FaxNo" class="form-control" />
+                                                <span asp-validation-for="FaxNo" class="text-danger"></span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label asp-for="HomeLandNo" class="control-label"></label>
+                                                <input asp-for="HomeLandNo" class="form-control" />
+                                                <span asp-validation-for="HomeLandNo" class="text-danger"></span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label asp-for="Extension" class="control-label"></label>
+                                                <input asp-for="Extension" class="form-control" />
+                                                <span asp-validation-for="Extension" class="text-danger"></span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label asp-for="PostCode" class="control-label">Post Code</label>
+                                                <input asp-for="PostCode" class="form-control" />
+                                                <span asp-validation-for="PostCode" class="text-danger"></span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label asp-for="LanguageId" class="control-label"></label>
+                                                <input asp-for="LanguageId" class="form-control" />
+                                                <span asp-validation-for="LanguageId" class="text-danger"></span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label asp-for="CurrencyId" class="control-label">Currency</label>
+                                                <input asp-for="CurrencyId" class="form-control" />
+                                                <span asp-validation-for="CurrencyId" class="text-danger"></span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label asp-for="CountryId" class="control-label">Country</label>
+                                                <select asp-for="CountryId" id="CountryId"
+                                                        asp-items="@ViewBag.Country" class="form-control">
+                                                    <option>Select Any</option>
+                                                </select>
+                                                <span asp-validation-for="CountryId" class="text-danger"></span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label asp-for="StateId" class="control-label">State</label>
+                                                <select asp-for="StateId" id="StateId"
+                                                        asp-items="@(new SelectList(string.Empty,"StateId","StateName"))" class="form-control">
+                                                    <option>Select any</option>
+                                                </select>
+                                                <span asp-validation-for="StateId" class="text-danger"></span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label asp-for="CityId" class="control-label">City</label>
+                                                <select asp-for="CityId" id="CityId"
+                                                        asp-items="@(new SelectList(string.Empty,"CityId","CityName"))" class="form-control">
+                                                    <option>Select any</option>
+                                                </select>
+                                                <span asp-validation-for="CityId" class="text-danger"></span>
+                                            </div>
+                                            <a href="#SalaryDetailsTab" data-toggle="tab" class="btn btn-primary">Back</a>
+                                            <a href="#OtherDocumentsTab" data-toggle="tab" class="btn btn-primary">Next</a>
+                                        </div>
+                                        <div id="OtherDocumentsTab" class="tab-pane fade col-md-12">
+                                            <div class="form-group">
+                                                <label asp-for="VisaNo" class="control-label">Visa</label>
+                                                <input asp-for="VisaNo" class="form-control" />
+                                                <span asp-validation-for="VisaNo" class="text-danger"></span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label asp-for="VisaStatus" class="control-label">Visa Status</label>
+                                                <input asp-for="VisaStatus" class="form-control" />
+                                                <span asp-validation-for="VisaStatus" class="text-danger"></span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label asp-for="VisaIssueDate" class="control-label">Visa Issued</label>
+                                                <input asp-for="VisaIssueDate" class="form-control" />
+                                                <span asp-validation-for="VisaIssueDate" class="text-danger"></span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label asp-for="VisaExpDate" class="control-label">Visa Expiry</label>
+                                                <input asp-for="VisaExpDate" class="form-control" />
+                                                <span asp-validation-for="VisaExpDate" class="text-danger"></span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label asp-for="ExpatNo" class="control-label"></label>
+                                                <input asp-for="ExpatNo" class="form-control" />
+                                                <span asp-validation-for="ExpatNo" class="text-danger"></span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label asp-for="InsProviderID" class="control-label">Insurance Provider</label>
+                                                <input asp-for="InsProviderID" class="form-control" />
+                                                <span asp-validation-for="InsProviderID" class="text-danger"></span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label asp-for="InsCardNo" class="control-label">Insurance Card</label>
+                                                <input asp-for="InsCardNo" class="form-control" />
+                                                <span asp-validation-for="InsCardNo" class="text-danger"></span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label asp-for="InsExpDate" class="control-label">Insurance Expiry</label>
+                                                <input asp-for="InsExpDate" class="form-control" />
+                                                <span asp-validation-for="InsExpDate" class="text-danger"></span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label asp-for="LicenseType" class="control-label"></label>
+                                                <input asp-for="LicenseType" class="form-control" />
+                                                <span asp-validation-for="LicenseType" class="text-danger"></span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label asp-for="LicenseNo" class="control-label"></label>
+                                                <input asp-for="LicenseNo" class="form-control" />
+                                                <span asp-validation-for="LicenseNo" class="text-danger"></span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label asp-for="LicenseIssuePlace" class="control-label"></label>
+                                                <input asp-for="LicenseIssuePlace" class="form-control" />
+                                                <span asp-validation-for="LicenseIssuePlace" class="text-danger"></span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label asp-for="LicIssueDate" class="control-label">License Issued</label>
+                                                <input asp-for="LicIssueDate" class="form-control" />
+                                                <span asp-validation-for="LicIssueDate" class="text-danger"></span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label asp-for="LicExpiryDate" class="control-label">License Expiry</label>
+                                                <input asp-for="LicExpiryDate" class="form-control" />
+                                                <span asp-validation-for="LicExpiryDate" class="text-danger"></span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label asp-for="EmiratesId" class="control-label"></label>
+                                                <input asp-for="EmiratesId" class="form-control" />
+                                                <span asp-validation-for="EmiratesId" class="text-danger"></span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label asp-for="IdentificationDocID" class="control-label"></label>
+                                                <input asp-for="IdentificationDocID" class="form-control" />
+                                                <span asp-validation-for="IdentificationDocID" class="text-danger"></span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label asp-for="VehicleNo" class="control-label"></label>
+                                                <input asp-for="VehicleNo" class="form-control" />
+                                                <span asp-validation-for="VehicleNo" class="text-danger"></span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label asp-for="Weburl" class="control-label"></label>
+                                                <input asp-for="Weburl" class="form-control" />
+                                                <span asp-validation-for="Weburl" class="text-danger"></span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label asp-for="PassportNo" class="control-label"></label>
+                                                <input asp-for="PassportNo" class="form-control" />
+                                                <span asp-validation-for="PassportNo" class="text-danger"></span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label asp-for="PlaceOfIssue" class="control-label"></label>
+                                                <input asp-for="PlaceOfIssue" class="form-control" />
+                                                <span asp-validation-for="PlaceOfIssue" class="text-danger"></span>
+                                            </div>
+                                            <a href="#ContactDetailsTab" data-toggle="tab" class="btn btn-primary">Back</a>
+                                            <a href="#JobDetailsTab" data-toggle="tab" class="btn btn-primary">Next</a>
+                                        </div>
+                                        <div id="JobDetailsTab" class="tab-pane fade col-md-12">
+                                            <div class="form-group">
+                                                <label asp-for="EmpDirectStatus" class="control-label"></label>
+                                                <input asp-for="EmpDirectStatus" class="form-control" />
+                                                <span asp-validation-for="EmpDirectStatus" class="text-danger"></span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label asp-for="EmpIndirectSupID" class="control-label"></label>
+                                                <input asp-for="EmpIndirectSupID" class="form-control" />
+                                                <span asp-validation-for="EmpIndirectSupID" class="text-danger"></span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label asp-for="LastAnnualLeave" class="control-label"></label>
+                                                <input asp-for="LastAnnualLeave" class="form-control" />
+                                                <span asp-validation-for="LastAnnualLeave" class="text-danger"></span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label asp-for="DateofResign" class="control-label"></label>
+                                                <input asp-for="DateofResign" class="form-control" />
+                                                <span asp-validation-for="DateofResign" class="text-danger"></span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label asp-for="DateofRelieve" class="control-label"></label>
+                                                <input asp-for="DateofRelieve" class="form-control" />
+                                                <span asp-validation-for="DateofRelieve" class="text-danger"></span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label asp-for="EmpStartDate" class="control-label"></label>
+                                                <input asp-for="EmpStartDate" class="form-control" />
+                                                <span asp-validation-for="EmpStartDate" class="text-danger"></span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label asp-for="EmpEndDate" class="control-label"></label>
+                                                <input asp-for="EmpEndDate" class="form-control" />
+                                                <span asp-validation-for="EmpEndDate" class="text-danger"></span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label asp-for="BranchId" class="control-label"></label>
+                                                <input asp-for="BranchId" class="form-control" />
+                                                <span asp-validation-for="BranchId" class="text-danger"></span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label asp-for="RepToMangr" class="control-label"></label>
+                                                <input asp-for="RepToMangr" class="form-control" />
+                                                <span asp-validation-for="RepToMangr" class="text-danger"></span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label asp-for="CompanyEmail" class="control-label"></label>
+                                                <input asp-for="CompanyEmail" class="form-control" />
+                                                <span asp-validation-for="CompanyEmail" class="text-danger"></span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label asp-for="NationalityID" class="control-label"></label>
+                                                <input asp-for="NationalityID" class="form-control" />
+                                                <span asp-validation-for="NationalityID" class="text-danger"></span>
+                                            </div>                                            
+
+                                            <div class="form-group">
+                                                <a href="#JobDetailsTab" data-toggle="tab" class="btn btn-primary">Back</a>
+                                                <input type="submit" value="Create" class="btn btn-primary" />
+                                            </div>
+                                            <div>
+                                                <a asp-action="Index">Back to List</a>
+                                            </div>
+                                            </div>
+                                        </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="~/assets/vendors/js/vendor.bundle.base.js"></script>
+    <script src="~/assets/vendors/js/vendor.bundle.addons.js"></script>
+    <!-- endinject -->
+    <!-- Plugin js for this page-->
+    <!-- End plugin js for this page-->
+    <!-- inject:js -->
+    <script src="~/assets/js/shared/off-canvas.js"></script>
+    <script src="~/assets/js/shared/misc.js"></script>
+    <!-- endinject -->
+    <!-- Custom js for this page-->
+    <!-- End custom js for this page-->
+</body>
+</html>
+
+
+

@@ -1,0 +1,62 @@
+﻿@model IEnumerable<SCNEXTCoreApp.Models.Master.Vehicletype>
+
+<br />
+@using (Html.BeginForm("Report", "Vehicletype", FormMethod.Get))
+{
+    // @Html.TextBox("searching")
+    @Html.RadioButton("searchBy", "Name", true)<text> Name</text>
+    @Html.RadioButton("searchBy", "Code", true)<text> Code</text>
+    <br />
+    @Html.TextBox("searching")
+    <input type="submit" value="Search" />
+}
+
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Code)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.Count() == 0)
+        {
+            <tr>
+                <td>No rows match search criteria</td>
+            </tr>
+        }
+        else
+        {
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Code)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+
+                </tr>
+            }
+        }
+
+    </tbody>
+</table>
+
+<div class="form-group col-md-4">
+    <a asp-action="Index" class="btn btn-secondary btn-block"><i class="fa fa-table"></i> Back to List</a>
+</div>
+

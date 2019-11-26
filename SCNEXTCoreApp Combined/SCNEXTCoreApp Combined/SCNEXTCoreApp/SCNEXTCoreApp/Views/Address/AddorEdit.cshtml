@@ -1,0 +1,204 @@
+﻿@model SCNEXTCoreApp.Models.Master.Address
+
+@{
+    ViewData["Title"] = "AddorEdit";
+}
+
+<h4>Address</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="AddorEdit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="AddressId" />
+                <div class="form-group">
+                    <label asp-for="AddressAprtNo" class="control-label"></label>
+                    <input asp-for="AddressAprtNo" class="form-control" />
+                    <span asp-validation-for="AddressAprtNo" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="AddressFloorNo" class="control-label"></label>
+                    <input asp-for="AddressFloorNo" class="form-control" />
+                    <span asp-validation-for="AddressFloorNo" class="text-danger"></span>
+                </div>
+                
+                <div class="form-group">
+                    <label asp-for="AddressBuildingNo" class="control-label"></label>
+                    <input asp-for="AddressBuildingNo" class="form-control" />
+                    <span asp-validation-for="AddressBuildingNo" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="AddressBuildingName" class="control-label"></label>
+                    <input asp-for="AddressBuildingName" class="form-control" />
+                    <span asp-validation-for="AddressBuildingName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="AddressStreetName" class="control-label"></label>
+                    <input asp-for="AddressStreetName" class="form-control" />
+                    <span asp-validation-for="AddressStreetName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="AddressStreetNo" class="control-label"></label>
+                    <input asp-for="AddressStreetNo" class="form-control" />
+                    <span asp-validation-for="AddressStreetNo" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="AddressAreaCode" class="control-label"></label>
+                    <input asp-for="AddressAreaCode" class="form-control" />
+                    <span asp-validation-for="AddressAreaCode" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="AddressAreaName" class="control-label"></label>
+                    <input asp-for="AddressAreaName" class="form-control" />
+                    <span asp-validation-for="AddressAreaName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="AddressCity" class="control-label"></label>
+                    <input asp-for="AddressCity" class="form-control" />
+                    <span asp-validation-for="AddressCity" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="AddressDistrict" class="control-label"></label>
+                    <input asp-for="AddressDistrict" class="form-control" />
+                    <span asp-validation-for="AddressDistrict" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="AddressState" class="control-label"></label>
+                    <input asp-for="AddressState" class="form-control" />
+                    <span asp-validation-for="AddressState" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="AddressCountry" class="control-label"></label>
+                    <input asp-for="AddressCountry" class="form-control" />
+                    <span asp-validation-for="AddressCountry" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="AddressContactNo1" class="control-label"></label>
+                    <input asp-for="AddressContactNo1" class="form-control" />
+                    <span asp-validation-for="AddressContactNo1" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="AddressContactNo2" class="control-label"></label>
+                    <input asp-for="AddressContactNo2" class="form-control" />
+                    <span asp-validation-for="AddressContactNo2" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="AddressEmailId1" class="control-label"></label>
+                    <input asp-for="AddressEmailId1" class="form-control" />
+                    <span asp-validation-for="AddressEmailId1" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="AddressEmailId2" class="control-label"></label>
+                    <input asp-for="AddressEmailId2" class="form-control" />
+                    <span asp-validation-for="AddressEmailId2" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="AddressContactPerson1" class="control-label"></label>
+                    <input asp-for="AddressContactPerson1" class="form-control" />
+                    <span asp-validation-for="AddressContactPerson1" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="AddressContactPerson2" class="control-label"></label>
+                    <input asp-for="AddressContactPerson2" class="form-control" />
+                    <span asp-validation-for="AddressContactPerson2" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="AddressLatLoc" class="control-label"></label>
+                    <input asp-for="AddressLatLoc" class="form-control" />
+                    <span asp-validation-for="AddressLatLoc" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="AddressLongLoc" class="control-label"></label>
+                    <input asp-for="AddressLongLoc" class="form-control" />
+                    <span asp-validation-for="AddressLongLoc" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="AddressUrl" class="control-label"></label>
+                    <input asp-for="AddressUrl" class="form-control" />
+                    <span asp-validation-for="AddressUrl" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="AddressClosestLandMark" class="control-label"></label>
+                    <input asp-for="AddressClosestLandMark" class="form-control" />
+                    <span asp-validation-for="AddressClosestLandMark" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="AddressField1" class="control-label"></label>
+                    <input asp-for="AddressField1" class="form-control" />
+                    <span asp-validation-for="AddressField1" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="AddressField2" class="control-label"></label>
+                    <input asp-for="AddressField2" class="form-control" />
+                    <span asp-validation-for="AddressField2" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="AddressField3" class="control-label"></label>
+                    <input asp-for="AddressField3" class="form-control" />
+                    <span asp-validation-for="AddressField3" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="AddressField4" class="control-label"></label>
+                    <input asp-for="AddressField4" class="form-control" />
+                    <span asp-validation-for="AddressField4" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="AddressField5" class="control-label"></label>
+                    <input asp-for="AddressField5" class="form-control" />
+                    <span asp-validation-for="AddressField5" class="text-danger"></span>
+                </div>
+                @*<div class="form-group">
+                    <label asp-for="TypeId" class="control-label"></label>
+                    <input asp-for="TypeId" class="form-control" />
+                    <span asp-validation-for="TypeId" class="text-danger"></span>
+                </div>*@
+                <div class="form-group">
+                    <label asp-for="TypeRefId" class="control-label"></label>
+                    <select asp-for="TypeRefId" class="form-control" asp-items="ViewBag.TypeRefId"></select>
+                </div>
+                @*@*<div class="form-group">
+                    <label asp-for="Status" class="control-label"></label>
+                    <input asp-for="Status" class="form-control" />
+                    <span asp-validation-for="Status" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="CompanyID" class="control-label"></label>
+                    <input asp-for="CompanyID" class="form-control" />
+                    <span asp-validation-for="CompanyID" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="CreatedOn" class="control-label"></label>
+                    <input asp-for="CreatedOn" class="form-control" />
+                    <span asp-validation-for="CreatedOn" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="CreatedBy" class="control-label"></label>
+                    <input asp-for="CreatedBy" class="form-control" />
+                    <span asp-validation-for="CreatedBy" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="ModifiedBy" class="control-label"></label>
+                    <input asp-for="ModifiedBy" class="form-control" />
+                    <span asp-validation-for="ModifiedBy" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="ModifiedOn" class="control-label"></label>
+                    <input asp-for="ModifiedOn" class="form-control" />
+                    <span asp-validation-for="ModifiedOn" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="IP" class="control-label"></label>
+                    <input asp-for="IP" class="form-control" />
+                    <span asp-validation-for="IP" class="text-danger"></span>
+                </div>*@
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

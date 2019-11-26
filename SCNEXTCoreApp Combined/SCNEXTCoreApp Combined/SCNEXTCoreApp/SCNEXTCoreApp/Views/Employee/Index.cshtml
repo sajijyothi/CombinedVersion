@@ -1,0 +1,504 @@
+﻿@using PagedList.Core;
+
+@model IPagedList<SCNEXTCoreApp.Models.Master.Employee>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    @*<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">*@
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>SCNext</title>
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="~/assets/vendors/iconfonts/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="~/assets/vendors/iconfonts/ionicons/css/ionicons.css">
+    <link rel="stylesheet" href="~/assets/vendors/iconfonts/typicons/src/font/typicons.css">
+    <link rel="stylesheet" href="~/assets/vendors/iconfonts/flag-icon-css/css/flag-icon.min.css">
+    <link rel="stylesheet" href="~/assets/vendors/css/vendor.bundle.base.css">
+    <link rel="stylesheet" href="~/assets/vendors/css/vendor.bundle.addons.css">
+    <!-- endinject -->
+    <!-- plugin css for this page -->
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="~/assets/css/shared/style.css">
+    <!-- endinject -->
+    <!-- Layout styles -->
+    <link rel="stylesheet" href="~/assets/css/demo_1/style.css">
+    <!-- End Layout styles -->
+    <link rel="shortcut icon" href="~/assets/images/favicon.png" />
+</head>
+<body>
+    <div class="col-12 grid-margin">
+        <div class="card">
+            <div class="card-body">
+
+                <h4 class="card-title">EMPLOYEE</h4>
+                <p>
+                    <a asp-action="Create">Create New</a>
+                </p>
+
+                <div class="card">
+                    <div class="card-body">
+                        <p>
+                            @using (Html.BeginForm("Index", "Employee", FormMethod.Get))
+                            {
+                                <b>Search by:</b>@Html.RadioButton("searchBy", "EmployeeName", true)<text>Name: </text>
+                                @Html.RadioButton("searchBy", "EmployeeCode")<text>Code: </text><br />
+                                @Html.TextBox("search")<input type="submit" value="search" />
+                                <a asp-action="Index">Refresh</a>
+                            }
+                        </p>
+
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.First().EmpFirstName)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.First().EmpLastName)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.First().Gender)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.First().EmpCode)
+                                    </th>
+                                    <th>
+                                        Profile picture
+                                    </th>
+                                    @*<th>
+                                            @Html.DisplayNameFor(model => model.ProfilepicName)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.Profession)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.Designation)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.DOJ)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.YearOfexp)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.BasicSalary)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.HRAAmt)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.TransportAmt)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.OtherAllowanceAmt)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.Address)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.PermanentAddress)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.ContactNo)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.LandlineNo)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.EmergencyNo)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.Email)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.FaxNo)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.HomeLandNo)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.Extension)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.PostCode)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.LanguageId)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.CurrencyId)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.StateId)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.CityId)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.CountryId)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.VisaNo)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.VisaStatus)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.VisaIssueDate)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.VisaExpDate)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.ExpatNo)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.InsCardNo)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.InsExpDate)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.LicIssueDate)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.LicExpiryDate)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.InsProviderID)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.EmiratesId)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.IdentificationDocID)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.LicenseType)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.LicenseNo)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.LicenseIssuePlace)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.VehicleNo)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.Weburl)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.PassportNo)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.PlaceOfIssue)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.EmpDirectStatus)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.EmpIndirectSupID)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.LastAnnualLeave)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.DateofResign)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.DateofRelieve)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.EmpStartDate)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.EmpEndDate)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.BranchId)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.RepToMangr)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.CompanyEmail)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.NationalityID)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.Description)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.Status)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.MfrId)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.CompanyID)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.CreatedOn)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.CreatedBy)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.ModifiedBy)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.ModifiedOn)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.IP)
+                                        </th>*@
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    var photopath = (item.ImagePath ?? "noimage.jpg");
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.EmpFirstName)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.EmpLastName)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Gender)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.EmpCode)
+                                        </td>
+                                        <td>
+                                            <img class="card-img-top" src="@photopath" style="width:200px;height:121px;" asp-append-version="true" />
+                                        </td>
+                                        @*<td>
+                                                @Html.DisplayFor(modelItem => item.ProfilepicName)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Profession)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Designation)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.DOJ)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.YearOfexp)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.BasicSalary)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.HRAAmt)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.TransportAmt)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.OtherAllowanceAmt)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Address)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.PermanentAddress)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.ContactNo)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.LandlineNo)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.EmergencyNo)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Email)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.FaxNo)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.HomeLandNo)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Extension)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.PostCode)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.LanguageId)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.CurrencyId)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.StateId)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.CityId)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.CountryId)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.VisaNo)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.VisaStatus)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.VisaIssueDate)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.VisaExpDate)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.ExpatNo)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.InsCardNo)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.InsExpDate)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.LicIssueDate)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.LicExpiryDate)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.InsProviderID)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.EmiratesId)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.IdentificationDocID)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.LicenseType)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.LicenseNo)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.LicenseIssuePlace)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.VehicleNo)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Weburl)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.PassportNo)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.PlaceOfIssue)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.EmpDirectStatus)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.EmpIndirectSupID)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.LastAnnualLeave)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.DateofResign)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.DateofRelieve)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.EmpStartDate)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.EmpEndDate)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.BranchId)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.RepToMangr)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.CompanyEmail)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.NationalityID)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Description)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Status)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.MfrId)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.CompanyID)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.CreatedOn)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.CreatedBy)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.ModifiedBy)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.ModifiedOn)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.IP)
+                                            </td>*@
+                                        <td>
+                                            <a asp-action="Edit" asp-route-id="@item.EmpId">Edit</a> |
+                                            <a asp-action="Delete" asp-route-id="@item.EmpId" class="text-danger ml-1" onclick="return confirm('Are you sure to delete this record?')">Delete</a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                        <pager class="pager-container" list="@Model" asp-action="Index" asp-controller="Employee" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="~/assets/vendors/js/vendor.bundle.base.js"></script>
+    <script src="~/assets/vendors/js/vendor.bundle.addons.js"></script>
+    <!-- endinject -->
+    <!-- Plugin js for this page-->
+    <!-- End plugin js for this page-->
+    <!-- inject:js -->
+    <script src="~/assets/js/shared/off-canvas.js"></script>
+    <script src="~/assets/js/shared/misc.js"></script>
+    <!-- endinject -->
+    <!-- Custom js for this page-->
+    <!-- End custom js for this page-->
+</body>
+</html>

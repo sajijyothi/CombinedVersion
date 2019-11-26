@@ -1,0 +1,242 @@
+﻿@model IEnumerable<SCNEXTCoreApp.Models.Master.CompanyDet>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="AddorEdit">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CompanyID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CompName)
+            </th>
+            @*<th>
+                @Html.DisplayNameFor(model => model.CompCode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CompTrnNo)
+            </th>*@
+            @*<th>
+                @Html.DisplayNameFor(model => model.CompAddress)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CompCity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CompState)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CompCountry)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CompZipCode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CompPrefPhoneNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CompAltPhoneNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CompContactName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CompRefNameNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CompLoginEnable)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CompAddress2)
+            </th>*@
+            @*<th>
+                @Html.DisplayNameFor(model => model.compLogo)
+            </th>*@                
+            <th>
+                Image
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OrgTypeID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OrgID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LicenseType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UserLimit)
+            </th>
+            @*<th>
+                @Html.DisplayNameFor(model => model.DefWorkStartTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DefWorkEndTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FinStartDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FinEndDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CmpTimeZone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CompBussinessHr)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MaxWrkHr)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TrnNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreatedOn)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreatedBy)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ModifiedBy)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ModifiedOn)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IP)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>*@
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        var photopath = (item.compLogo ?? "noimage.jpg");
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CompanyID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CompName)
+            </td>
+            @*<td>
+                @Html.DisplayFor(modelItem => item.CompCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CompTrnNo)
+            </td>*@
+            @*<td>
+                @Html.DisplayFor(modelItem => item.CompAddress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CompCity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CompState)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CompCountry)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CompZipCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CompPrefPhoneNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CompAltPhoneNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CompContactName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CompRefNameNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CompLoginEnable)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CompAddress2)
+            </td>*@
+            @*<td>
+            @Html.DisplayFor(modelItem => item.compLogo)
+        </td>*@
+            <td>
+                <img class="card-img-top" src="@photopath" style="width:200px;height:121px;" asp-append-version="true" />
+            </td>
+            @*<td>
+                @Html.DisplayFor(modelItem => item.OrgTypeID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OrgID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LicenseType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserLimit)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DefWorkStartTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DefWorkEndTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FinStartDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FinEndDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CmpTimeZone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CompBussinessHr)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaxWrkHr)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TrnNo)
+            </td>*@
+            <td>
+                <img class="card-img-top" src="@photopath" style="width:200px;height:121px;" asp-append-version="true" />
+            </td>
+            @*<td>
+                @Html.DisplayFor(modelItem => item.CreatedOn)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedBy)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ModifiedBy)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ModifiedOn)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IP)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>*@
+            <td>
+                <a asp-action="AddorEdit" asp-route-id="@item.CmpId">Edit</a> |
+                <a asp-action="Delete" asp-route-id="@item.CmpId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
